@@ -1,0 +1,16 @@
+{
+    "name": "idealodonto/topdown-php",
+    "description": "TopDown PHP Library",
+    "authors": [
+        {
+            "name": "Mauricio Toledo",
+            "email": "mauricio.toledo@idealtrends.com.br"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0@dev"
+    },
+    "autoload": {
+        "psr-4": {"TopDown\\": "src/"}
+    }
+}

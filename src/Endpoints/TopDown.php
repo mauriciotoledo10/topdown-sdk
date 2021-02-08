@@ -21,6 +21,20 @@ class TopDown extends Endpoint {
     }
 
     /**
+     * get all cities data by UF state code
+     *
+     * @param [type] $uf
+     * @return void
+     */
+    public function cities($uf) 
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::modulateRoute()->routeData("localidades/cidades/operadora/1/tipovinculacao/Credenciado/estado/{$uf}/situacaohabilitacaoprestador/Ativo")
+        );
+    }
+
+    /**
      * get specialties data by $ibgeCityCode code
      * @param $ibgeCityCode
      * @return \ArrayObject

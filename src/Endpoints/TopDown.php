@@ -12,7 +12,7 @@ class TopDown extends Endpoint {
      * get all data for accredited states (IBGE code, etc.)
      * @return \ArrayObject
      */
-    public function cities() 
+    public function states() 
     {
         return $this->client->request(
             self::GET,
@@ -29,7 +29,7 @@ class TopDown extends Endpoint {
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("especialidades/operadora/1/tipovinculacao/Credenciado/cidadeibge/{$cidadeIbge}/situacaohabilitacaoprestador/Ativo")
+            Routes::modulateRoute()->routeData("especialidades/operadora/1/tipovinculacao/Credenciado/cidadeibge/{$ibgeCityCode}/situacaohabilitacaoprestador/Ativo")
         );
     }
 

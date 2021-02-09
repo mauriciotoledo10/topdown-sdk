@@ -53,14 +53,22 @@ class TopDown extends Endpoint {
      * @param $ibgeCityCode
      * @param $specialtyId
      * @param $providerType
+     * @param $neighborhood
      * @return \ArrayObject
      */
-    public function providers($ibgeCityCode, $specialtyId) 
+    public function providers($ibgeCityCode, $specialtyId, $neighborhood = null) 
     {
-        return $this->client->request(
-            self::GET,
-            Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?limit=2147483647&retornarDadosComplemento=true")
-        );
+        if($neighborhood == null) {
+            return $this->client->request(
+                self::GET,
+                Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?limit=2147483647&retornarDadosComplemento=true")
+            );
+        } else {
+            return $this->client->request(
+                self::GET,
+                Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?nomeBairro={$neighborhood}&limit=2147483647&retornarDadosComplemento=true")
+            );
+        }
     }
 
     /**

@@ -16,7 +16,7 @@ class TopDown extends Endpoint {
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("localidades/estados/operadora/1/tipovinculacao/Credenciado/situacaohabilitacaoprestador/Ativo")
+            Routes::modulateRoute()->routeData("localidades/estados/operadora/1/tipovinculacao/Todos/situacaohabilitacaoprestador/Ativo")
         );
     }
 
@@ -30,7 +30,7 @@ class TopDown extends Endpoint {
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("localidades/cidades/operadora/1/tipovinculacao/Credenciado/estado/{$uf}/situacaohabilitacaoprestador/Ativo")
+            Routes::modulateRoute()->routeData("localidades/cidades/operadora/1/tipovinculacao/Todos/estado/{$uf}/situacaohabilitacaoprestador/Ativo")
         );
     }
 
@@ -55,11 +55,11 @@ class TopDown extends Endpoint {
      * @param $providerType
      * @return \ArrayObject
      */
-    public function providers($ibgeCityCode, $specialtyId, $providerType) 
+    public function providers($ibgeCityCode, $specialtyId) 
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/{$providerType}/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?limit=2147483647&retornarDadosComplemento=true")
+            Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?limit=2147483647&retornarDadosComplemento=true")
         );
     }
 
@@ -73,7 +73,20 @@ class TopDown extends Endpoint {
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("tiposprestador/operadora/1/tipovinculacao/Credenciado/cidadeibge/{$ibgeCityCode}/plano/{$plan}/situacaohabilitacaoprestador/Ativo")
+            Routes::modulateRoute()->routeData("tiposprestador/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/plano/{$plan}/situacaohabilitacaoprestador/Ativo")
+        );
+    }
+
+    /**
+     * get plans by ibge city code
+     * @param [type] $ibgeCityCode
+     * @return void
+     */
+    public function plans($ibgeCityCode) 
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::modulateRoute()->routeData("planos/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/situacaohabilitacaoplano/Ativo")
         );
     }
 }

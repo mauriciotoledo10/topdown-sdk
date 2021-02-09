@@ -62,4 +62,18 @@ class TopDown extends Endpoint {
             Routes::modulateRoute()->routeData("prestadores/operadora/1/tipovinculacao/{$providerType}/cidadeibge/{$ibgeCityCode}/especialidade/{$specialtyId}/situacaohabilitacaoprestador/Ativo?limit=2147483647&retornarDadosComplemento=true")
         );
     }
+
+    /**
+     * get provider types by ibge city code and plan id
+     * @param [type] $ibgeCityCode
+     * @param [type] $plan
+     * @return void
+     */
+    public function providerTypes($ibgeCityCode, $plan) 
+    {
+        return $this->client->request(
+            self::GET,
+            Routes::modulateRoute()->routeData("tiposprestador/operadora/1/tipovinculacao/Credenciado/cidadeibge/{$ibgeCityCode}/plano/{$plan}/situacaohabilitacaoprestador/Ativo")
+        );
+    }
 }

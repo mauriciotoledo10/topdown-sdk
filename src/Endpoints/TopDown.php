@@ -36,15 +36,15 @@ class TopDown extends Endpoint {
 
     /**
      * get specialties data by $ibgeCityCode code
-     * @param $providerType
      * @param $ibgeCityCode
+     * @param $plan
      * @return \ArrayObject
      */
-    public function specialties($providerType, $ibgeCityCode) 
+    public function specialties($ibgeCityCode, $plan) 
     {
         return $this->client->request(
             self::GET,
-            Routes::modulateRoute()->routeData("especialidades/operadora/1/tipovinculacao/{$providerType}/cidadeibge/{$ibgeCityCode}/situacaohabilitacaoprestador/Ativo")
+            Routes::modulateRoute()->routeData("especialidades/operadora/1/tipovinculacao/Todos/cidadeibge/{$ibgeCityCode}/situacaohabilitacaoprestador/Ativo?idPlano={$plan}")
         );
     }
 
